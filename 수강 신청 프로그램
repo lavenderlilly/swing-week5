@@ -30,7 +30,7 @@ public:
 			cout << "[" << i + 1 << "]" << lecture[i] << " >> " << lecture_num[i] << endl;
 	}
 
-	string* pString = new string[SIZE];    //동적 할당
+	string* pString = new string[SIZE];
 	string Mybag[SIZE];
 
 	void bag_course(string lecture_num)    
@@ -39,9 +39,14 @@ public:
 		{
 			for (int i = 0; i < SIZE; i++)
 			{
-				if (Mybag[i] == "\0")
+				if (Mybag[i] == "\0" && Mybag[i - 1] != "c++ 프로그래밍" && Mybag[i - 2] != "c++ 프로그래밍")
 				{
 					Mybag[i] = "c++ 프로그래밍";
+					break;
+				}
+				else if (Mybag[i] == "c++ 프로그래밍" || Mybag[i - 1] == "c++ 프로그래밍" || Mybag[i - 2] == "c++ 프로그래밍")
+				{
+					cout << "이미 MY 장바구니에 담겨져 있습니다." << endl;
 					break;
 				}
 			}
@@ -51,24 +56,32 @@ public:
 		{
 			for (int i = 0; i < SIZE; i++)
 			{
-				if (Mybag[i] == "\0")
+				if (Mybag[i] == "\0" && Mybag[i - 1] != "linux 프로그래밍" && Mybag[i - 2] != "linux 프로그래밍")
 				{
 					Mybag[i] = "linux 프로그래밍";
 					break;
 				}
-				
+				else if (Mybag[i] == "linux 프로그래밍" || Mybag[i - 1] == "linux 프로그래밍" || Mybag[i - 2] == "linux 프로그래밍")
+				{
+					cout << "이미 MY 장바구니에 담겨져 있습니다." << endl;
+					break;
+				}
 			}
 		}
 		else if (lecture_num == "0003")
 		{
 			for (int i = 0; i < SIZE; i++)
 			{
-				if (Mybag[i] == "\0")
+				if (Mybag[i] == "\0" && Mybag[i - 1] != "리버싱" && Mybag[i - 2] != "리버싱")
 				{
 					Mybag[i] = "리버싱";
 					break;
 				}
-				
+				else if (Mybag[i] == "리버싱" || Mybag[i - 1] == "리버싱" || Mybag[i - 2] == "리버싱")
+				{
+					cout << "이미 MY 장바구니에 담겨져 있습니다." << endl;
+					break;
+				}
 			}
 		}
 
@@ -169,8 +182,7 @@ int main(void)
 			cout << "추가할 학수 번호 >> ";
 			string lecture_num;
 			cin >> lecture_num;
-			q->bag_course(lecture_num);    //질문: 같은 학수 번호를 입력받았을 때, '이미 MY 장바구니에 담겨져 있습니다'를 출력하는 조건식(?) 작성을 어떻게 하는지 잘 모르겠습니다... 조언 부탁드립니다!!
-
+			q->bag_course(lecture_num);
 		}
 		else if (num == 3)
 		{
